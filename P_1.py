@@ -1,4 +1,6 @@
 # Find the sum of all the multiples of 3 or 5 below 1000
+
+
 def sum_of_multiple(x, y, z):
     # finds the sum of multiples of numbers x and y from 1 to below z
     addi = 0
@@ -11,3 +13,4 @@ def sum_of_multiple(x, y, z):
 
 three_and_five = sum_of_multiple(3, 5, 1000)
 print(three_and_five)
+print('123')
