@@ -1,8 +1,11 @@
-# Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers
+# Find the sum of all the positive integers which cannot be written
+# as the sum of two abundant numbers
+import string
+
 
 # From P_3
-def is_factor(x,y):
-    if x%y==0:
+def is_factor(x, y):
+    if x % y == 0:
         return True
     else:
         return False
@@ -19,13 +22,14 @@ def is_factor(x,y):
 #     else:
 #         return False
 
+
 def is_abundant(n):
-    sum_=0
-    for div in range(1,n):
-        if is_factor(n,div)==True:
-            sum_=sum_+div
-            #print(sum_)
-    if sum_>=n:     # abundant number
+    sum_ = 0
+    for div in range(1, n):
+        if is_factor(n, div) is True:
+            sum_ = sum_+div
+            # print(sum_)
+    if sum_ >= n:     # abundant number
         return True
     else:
         return False
@@ -44,15 +48,15 @@ def is_abundant(n):
 
 
 # Do the same thing for generating the second list of sum of abundant
-import string
-with open('P_23_stored_abundant.txt','r') as f:
-    liste=f.read().splitlines()
-f=open('P_23_stored_sumof_abundant.txt','w')
-list_of_sumof_abundant=[]
+
+with open('P_23_stored_abundant.txt', 'r') as f:
+    liste = f.read().splitlines()
+f = open('P_23_stored_sumof_abundant.txt', 'w')
+list_of_sumof_abundant = []
 for a in range(len(liste)):
     for b in range((a), len(liste)):
-        #sum_=liste[a]+liste[b]
-        f.write(str (int(liste[a])+int(liste[b])) +'\n')
+        # sum_=liste[a]+liste[b]
+        f.write(str(int(liste[a])+int(liste[b])) + '\n')
 f.close()
 # and put it back in comment after
 
@@ -74,11 +78,12 @@ f.close()
 # l3 = [x for x in l1 if x not in l2]
 # print(l3)
 
+
 # From P_16
 def sum_of_string(string):
-    sum_=0
+    sum_ = 0
     for i in range(len(string)):
-        sum_=sum_+int(string[i])
+        sum_ = sum_+int(string[i])
     return sum_
 
-#print(sum_of_string(l3))
+# print(sum_of_string(l3))
