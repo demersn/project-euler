@@ -1,4 +1,5 @@
-# What is the value of the first triangle number to have over five hundred divisors?
+# What is the value of the first triangle number 
+# to have over five hundred divisors?
 
 
 def gen_triangle(x):
