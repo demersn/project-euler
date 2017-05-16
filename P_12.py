@@ -1,5 +1,8 @@
-# What is the value of the first triangle number 
+# What is the value of the first triangle number
 # to have over five hundred divisors?
+
+import numpy as np
+from common import sieve
 
 
 def gen_triangle(x):
@@ -9,30 +12,45 @@ def gen_triangle(x):
     return tri
 
 
-print(gen_triangle(3))
+p = list(sieve(70000))
 
 
-def is_factor(x, y):
-    if x % y == 0:
-        return True
+def factors(n, primes):
+    if n in primes:
+        n_factors = 2
+        primes = []
+        e = []
     else:
-        return False
+        primes = []
+        for ii in range(len(p)):
+            if n % p[ii] == 0:
+                primes.append(p[ii])
 
+        d = n
+        e = []
+        for a in range(len(primes)):
+            while d % primes[a] == 0:
+                d = d/primes[a]
+                e.append(primes[a])
 
-def num_factors(x):
-    factors = 0
-    for i in range(1, x+1):
-        if is_factor(x, i) is True:
-            factors += 1
-    return factors
+        if np.prod(e) != n:
+            print('oops!')
+            print(d)
+            print(e)
 
-# print(list_factors(28))
+        n_occurence = []
+        for c in range(len(primes)):
+            n_occurence.append(e.count(primes[c]))
+
+        n_factors = np.prod(np.array(n_occurence)+1)
+
+    return n_factors, primes, e
 
 
 def first_to_n_div(n):
     tri = 1
     x = 1
-    while num_factors(tri) < n:
+    while factors(tri, p)[0] < n:
         tri = gen_triangle(x)
         x += 1
         # print(gen_triangle(x))

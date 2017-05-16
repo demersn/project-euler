@@ -1,5 +1,12 @@
 # Common functions used to solve Project Euler problems
 import numpy as np
+
+# is_prime(n) Primality test
+# primes = sieve(end) Generate Primes until [end]
+# n_factors, primes, e = factors(n) number of factors, prime factors
+#                                   and prime combinaison for n
+
+
 # Miller-Rabin Primality test in PYHTON
 # from https://rosettacode.org/wiki/Miller%E2%80%93Rabin_primality_test#Python
 # This versions will give correct answers for n less than 341550071728321
@@ -73,19 +80,30 @@ def sieve(end):
 
 # Number of divisors (from prime numbers)
 
-# def num_factors(n):
-#     primes = []
-#     if is_prime(n) is True:
-#         nfact = 2
-#     else:
-#         primes = sieve(np.floor(n**(1/2)))
-#         primes = list(reversed(primes))
-#         print(primes)
-#         while fact != n:
-#             fact = pow(primes[ii], po)
+# n_factors, primes, e = factors(n)
+def factors(n):
+    p = list(sieve(int(n/2)))
 
-#         nfact = 'primes'
-#     return nfact
+    primes = []
+    for ii in range(len(p)):
+        if n % p[ii] == 0:
+            primes.append(p[ii])
 
+    d = n
+    e = []
+    for a in range(len(primes)):
+        while d % primes[a] == 0:
+            d = d/primes[a]
+            e.append(primes[a])
 
-# print(num_factors(12))
+    if np.prod(e) != n:
+        print('oops!, n may be prime')
+
+    n_occurence = []
+    for c in range(len(primes)):
+        n_occurence.append(e.count(primes[c]))
+
+    n_factors = np.prod(np.array(n_occurence)+1)
+
+    return n_factors, primes, e
+
