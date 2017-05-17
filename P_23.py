@@ -49,15 +49,15 @@ def is_abundant(n):
 
 # Do the same thing for generating the second list of sum of abundant
 
-with open('P_23_stored_abundant.txt', 'r') as f:
-    liste = f.read().splitlines()
-f = open('P_23_stored_sumof_abundant.txt', 'w')
-list_of_sumof_abundant = []
-for a in range(len(liste)):
-    for b in range((a), len(liste)):
-        # sum_=liste[a]+liste[b]
-        f.write(str(int(liste[a])+int(liste[b])) + '\n')
-f.close()
+# with open('P_23_stored_abundant.txt', 'r') as f:
+#     liste = f.read().splitlines()
+# f = open('P_23_stored_sumof_abundant.txt', 'w')
+# list_of_sumof_abundant = []
+# for a in range(len(liste)):
+#     for b in range((a), len(liste)):
+#         # sum_=liste[a]+liste[b]
+#         f.write(str(int(liste[a])+int(liste[b])) + '\n')
+# f.close()
 # and put it back in comment after
 
 

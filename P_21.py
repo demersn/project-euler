@@ -4,6 +4,8 @@
 # If d(a) = b and d(b) = a, where a != b, then a and b are an amicable pair
 # and each of a and b are called amicable numbers.
 
+lim = 10001
+
 
 def d(n):
     sum_ = 0
@@ -14,36 +16,36 @@ def d(n):
     return sum_
 
 
-# print(d(220))
+amicable_list = []
+for ii in range(lim):
+    amicable_list.append([ii, d(ii)])
+
+# print(amicable_list)
 
 
 def is_amicable(a, b):
     if a == b:
         return False
-    elif d(a) == b and d(b) == a:
+    elif (amicable_list[a][1] == amicable_list[b][0]
+            and amicable_list[b][1] == amicable_list[a][0]):
         return True
     else:
         return False
 
 
-print(is_amicable(220, 284))
-
-
-# From P_16
-# def sum_of_string(string):
-#     sum_ = 0
-#     for i in range(len(string)):
-#         sum_ = sum_+int(string[i])
-#     return sum_
+print(is_amicable(284, 220))
 
 
 def sum_of_amicable_under(x):
     sum_amicable = 0
-    for a in range(x+1):
-        for b in range(x+1):
+    for a in range(x):
+        for b in range(x):
             if is_amicable(a, b) is True and a != b:
                 sum_amicable += a+b
-    return sum_amicable
+    return (sum_amicable/2)  # The result is doubled as they both go up
 
 
-print(sum_of_amicable_under(500))
+print(sum_of_amicable_under(lim))
+
+# There is probably as way to eliminate the need to divide by 2 at the end
+# and save on time, but as of right now, I am not sure how.
