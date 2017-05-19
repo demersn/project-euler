@@ -1,29 +1,29 @@
+from common import sieve
+# from common import is_prime
 
-def is_prime(y):
-    #b=int(y**0.5)
-    if y % 2 == 0 and y > 2:
-        return False
-       # check for factors
-    for i in range(3,2,y):
-        if (y % i) == 0:
-            return False
-    if y<2:
-        return False
-    else:
-        return True
 
-def n_cons_primes(range_):
-    for a in range(-range_,1,range_):
-        for b in range(-range_,1,range_):
-            n=0
-            break_=0
-            value=n^2+a*n+b
-            while break_==0:
-                if is_prime(value)==True:
-                    n=n+1
+def n_cons_primes(limit, sieve_limit):
+    primes = sieve(sieve_limit)
+    n_max = 0
+    ab = 0
+    bb = 0
+    for a in range(-limit, 1, limit):
+        for b in range(-limit, 1, limit):
+            n = 0
+            break_ = 0
+            value = (n**2)+(a*n)+b
+            while break_ == 0:
+                if value in primes:
+                    n += 1
                 else:
-                    break_=1
-                    return n-1
+                    break_ = 1
+                    n_temp = n
+            if n_temp > n_max:
+                n_max = n
+                ab = a
+                bb = b
+    return n_max-1, a, b
 
-print(n_cons_primes(50))
+
+print(n_cons_primes(50, 1000))
 # Doit iterer sur n aussi, a retravailler

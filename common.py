@@ -42,9 +42,11 @@ def is_prime(n, _precision_for_huge_n=16):
     if n < 2152302898747:
         return not any(_try_composite(a, d, n, s) for a in (2, 3, 5, 7, 11))
     if n < 3474749660383:
-        return not any(_try_composite(a, d, n, s) for a in (2, 3, 5, 7, 11, 13))
+        return not any(_try_composite(a, d, n, s) for a in (
+                                                    2, 3, 5, 7, 11, 13))
     if n < 341550071728321:
-        return not any(_try_composite(a, d, n, s) for a in (2, 3, 5, 7, 11, 13, 17))
+        return not any(_try_composite(a, d, n, s) for a in (
+                                                    2, 3, 5, 7, 11, 13, 17))
     # otherwise
     return not any(_try_composite(a, d, n, s)
                    for a in _known_primes[:_precision_for_huge_n])
@@ -106,4 +108,3 @@ def factors(n):
     n_factors = np.prod(np.array(n_occurence)+1)
 
     return n_factors, primes, e
-
