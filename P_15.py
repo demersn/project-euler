@@ -1,30 +1,28 @@
 # P_15
+# Takes way too long to compute for size = 20, needs more thinking
 import numpy as np
-size = 3
-# [ii] denotes the horizontal [ - ] line index of the grid
+
+size = 4
+size += 1
+g = list(reversed(range(1, size+1)))
 
 
-# init = np.zeros(size)
-# z = init
-# temp = init
-# ind = 1
-# grid = []
-# for ii in range(1, size)
-#     for jj in range(size+1):
-#         a = z
-#         a[ii][-11]
-
-# grid = np.reshape(grid, (len(grid)/2, 2))
+def sublist(input):
+    sub = []
+    for tt in range(len(input)):
+        a = input[tt:]
+        sub.append(a)
+    return sub
 
 
-# print(grid)
-# print(len(grid))
+gg = sublist(g)
+print(gg)
 
-l = list(reversed(range(1, size+1)))
-# l = list(reversed(l))
-print(l)
-s = size+2
-for ii in range(len(l)):
-    s += np.sum(l[ii:])
+for ii in range(size-3):
+    g = sublist(g)
 
-print(s)
+# print(g)
+for l in range(len(g)):
+    g = np.sum(g)
+print(g)
+
